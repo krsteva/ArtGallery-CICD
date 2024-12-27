@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-body">
         <h1>Delete Artist</h1>
-        <p>Are you sure you want to delete {{ artist.name }}?</p>
+        <p>Are you sure you want to delete {{ artist.name }} ?</p>
         <form method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Delete</button>
