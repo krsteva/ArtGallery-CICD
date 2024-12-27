@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1>{{ painting.title }}</h1>
+        <p class="lead">By {{ painting.artist.name }}</p>
+        <p>Year: {{ painting.year }}</p>
+        <p>Medium: {{ painting.medium }}</p>
+
+        <div class="btn-group">
+            <a href="{% url 'painting_update' pk=painting.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'painting_delete' pk=painting.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

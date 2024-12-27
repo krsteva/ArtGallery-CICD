@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Artists</h1>
+    <a href="{% url 'artist_create' %}" class="btn btn-primary">Add Artist</a>
+</div>
+
+<div class="row">
+    {% for artist in artists %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ artist.name }}</h5>
+                <p class="card-text">{{ artist.nationality }}</p>
+                <div class="btn-group">
+                    <a href="{% url 'artist_detail' pk=artist.pk %}" class="btn btn-sm btn-primary">View</a>
+                    <a href="{% url 'artist_update' pk=artist.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'artist_delete' pk=artist.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

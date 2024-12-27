@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1>{{ artist.name }}</h1>
+        <p class="lead">{{ artist.nationality }}</p>
+        <p>{{ artist.biography }}</p>
+
+        <h3>Paintings</h3>
+        <div class="list-group mb-4">
+            {% for painting in artist.paintings.all %}
+            <div class="list-group-item">
+                <h5>{{ painting.title }}</h5>
+                <p class="mb-1">{{ painting.year }} - {{ painting.medium }}</p>
+            </div>
+            {% empty %}
+            <p>No paintings available.</p>
+            {% endfor %}
+        </div>
+
+        <div class="btn-group">
+            <a href="{% url 'artist_update' pk=artist.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'artist_delete' pk=artist.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

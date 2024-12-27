@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Paintings</h1>
+    <a href="{% url 'painting_create' %}" class="btn btn-primary">Add Painting</a>
+</div>
+
+<div class="row">
+    {% for painting in paintings %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ painting.title }}</h5>
+                <p class="card-text">
+                    {{ painting.year }} - {{ painting.medium }}<br>
+                    Artist: {{ painting.artist.name }}
+                </p>
+                <div class="btn-group">
+                    <a href="{% url 'painting_detail' pk=painting.pk %}" class="btn btn-sm btn-primary">View</a>
+                    <a href="{% url 'painting_update' pk=painting.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'painting_delete' pk=painting.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

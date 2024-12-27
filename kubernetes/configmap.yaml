@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: artgallery-config
+  namespace: artgallery-cicd
+data:
+  POSTGRES_DB: "ArtGallery"
+  POSTGRES_URL: postgres-service.artgallery-cicd.svc.cluster.local

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: artgallery
+  namespace: artgallery-cicd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: artgallery
+  template:
+    metadata:
+      labels:
+        app: artgallery
+    spec:
+      containers:
+        - name: artgallery
+          image: //TODO Dockerhub repo
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              value: "postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@$(POSTGRES_URL):5432/$(POSTGRES_DB)"
+          envFrom:
+            - configMapRef:
+                name: artgallery-config
+            - secretRef:
+                name: artgallery-secret
