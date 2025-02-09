@@ -1,4 +1,4 @@
-name: BookProject CI/CD
+name: ArtGallery CI/CD
 
 on:
   push:
