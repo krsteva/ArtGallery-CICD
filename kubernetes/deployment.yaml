@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: artgallery
-          image: //TODO Dockerhub repo
+          image: krrsteva/artgallery-cicd:latest
           resources:
             requests:
               memory: "64Mi"
