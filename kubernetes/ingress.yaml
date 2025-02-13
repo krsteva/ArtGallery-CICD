@@ -4,15 +4,17 @@ metadata:
   name: artgallery-ingress
   namespace: artgallery-cicd
   annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: artgallery-service
-            port:
-              number: 80
+    - host: artgallery.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: artgallery-service
+                port:
+                  number: 80
